@@ -56,6 +56,26 @@ describe Money do
     end
   end
 
+  describe "#exchange_to" do
+    it "returns itself when an exchange is not required" do
+      bank = TestBank.new
+      money = Money.new(1000, "USD", bank)
+      money.exchange_to("USD")
+
+      bank.money.should be_nil
+      bank.to_currency.should be_nil
+    end
+
+    it "calls #exchange_with on the bank when required" do
+      bank = TestBank.new
+      money = Money.new(1000, "USD", bank)
+      money.exchange_to("GBP")
+
+      bank.money.should eq(money)
+      bank.to_currency.should eq(Money::Currency.find("GBP"))
+    end
+  end
+
   describe "#to_s" do
     it "returns the amount as a string" do
       Money.new(100).to_s.should eq("1.00")

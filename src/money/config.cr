@@ -13,5 +13,6 @@ class Money
     end
 
     config default_currency, String, "USD"
+    config default_bank, Bank::Base, Bank::SingleCurrency.new
   end
 end

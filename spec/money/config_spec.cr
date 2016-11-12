@@ -6,4 +6,10 @@ describe Money::Config do
       Money::Config.default_currency.should eq("USD")
     end
   end
+
+  describe ".default_bank" do
+    it "should return a SingleCurrency instance" do
+      Money::Config.default_bank.should be_a(Money::Bank::SingleCurrency)
+    end
+  end
 end
