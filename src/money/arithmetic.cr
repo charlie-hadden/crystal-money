@@ -1,17 +1,16 @@
-# TODO: Handle different currencies
 class Money
   include Comparable(Money)
 
   def <=>(other : Money)
-    fractional <=> other.fractional
+    fractional <=> other.exchange_to(currency).fractional
   end
 
   def +(other : Money)
-    Money.new(fractional + other.fractional, currency)
+    Money.new(fractional + other.exchange_to(currency).fractional, currency)
   end
 
   def -(other : Money)
-    Money.new(fractional - other.fractional, currency)
+    Money.new(fractional - other.exchange_to(currency).fractional, currency)
   end
 
   def *(other : Int)

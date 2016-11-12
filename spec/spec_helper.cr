@@ -4,5 +4,7 @@ require "../src/money"
 class TestBank < Money::Bank::Base
   getter :money, :to_currency
 
-  def exchange_with(@money : Money, @to_currency : Money::Currency); end
+  def exchange_with(@money : Money, @to_currency : Money::Currency)
+    Money.new(0)
+  end
 end

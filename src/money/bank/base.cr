@@ -4,11 +4,11 @@ class Money
     class UnknownRate < Error; end
 
     abstract class Base
-      def exchange_with(from : Money, to_currency : String)
+      def exchange_with(from : Money, to_currency : String) : Money
         exchange_with(from, Currency.find(to_currency))
       end
 
-      abstract def exchange_with(from : Money, to_currency : Currency)
+      abstract def exchange_with(from : Money, to_currency : Currency) : Money
     end
   end
 end

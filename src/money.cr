@@ -29,7 +29,7 @@ class Money
     exchange_to(Currency.find(to_currency))
   end
 
-  def exchange_to(to_currency : Currency)
+  def exchange_to(to_currency : Currency) : Money
     if currency == to_currency
       self
     else
