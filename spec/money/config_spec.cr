@@ -8,8 +8,8 @@ describe Money::Config do
   end
 
   describe ".default_bank" do
-    it "should return a SingleCurrency instance" do
-      Money::Config.default_bank.should be_a(Money::Bank::SingleCurrency)
+    it "should return a VariableExchange instance" do
+      Money::Config.default_bank.should be_a(Money::Bank::VariableExchange)
     end
   end
 
