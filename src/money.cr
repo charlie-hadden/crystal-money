@@ -16,11 +16,19 @@ class Money
     BigFloat.new(fractional) / BigFloat.new(currency.subunit_to_unit)
   end
 
-  def to_s
+  def to_s(io : IO)
     unit, subunit = fractional.abs.divmod(currency.subunit_to_unit)
-    str = "#{unit}#{currency.decimal_mark}#{pad_subunit(subunit)}"
 
-    fractional < 0 ? "-#{str}" : str
+    str = "#{unit}#{currency.decimal_mark}#{pad_subunit(subunit)}"
+    str = "-#{str}" if fractional < 0
+
+    io << str
+  end
+
+  def inspect(io : IO)
+    io << "#<" << {{@type.name.id.stringify}} << ":0x"
+    object_id.to_s(16, io)
+    io << " fractional: #{fractional}, currency: #{currency.iso_code}>"
   end
 
   private def pad_subunit(subunit)

@@ -76,4 +76,12 @@ describe Money do
       Money.new(1000, "BRL").to_s.should eq("10,00")
     end
   end
+
+  describe "#inspect" do
+    it "provides the information we want" do
+      format = Money.new(100).inspect
+
+      format.should match(/\A#<Money:0x[0-9a-f]+ fractional: 100, currency: USD>\Z/)
+    end
+  end
 end
