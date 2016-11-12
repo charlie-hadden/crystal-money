@@ -5,8 +5,11 @@ class Money
   getter :fractional, :currency
 
   def initialize(fractional : Int, currency : String = Config.default_currency)
+    initialize(fractional, Currency.find(currency))
+  end
+
+  def initialize(fractional : Int, @currency : Currency)
     @fractional = fractional.to_i64.as(Int64)
-    @currency = Currency.find(currency).as(Currency)
   end
 
   def amount

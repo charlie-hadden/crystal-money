@@ -9,9 +9,16 @@ describe Money do
       end
     end
 
-    context "a currency is provided" do
+    context "a currency is provided as a string" do
       it "should use the provided currency" do
         money = Money.new(1000, "GBP")
+        money.currency.iso_code.should eq("GBP")
+      end
+    end
+
+    context "a currency instance is provided" do
+      it "should use the provided currency" do
+        money = Money.new(1000, Money::Currency.find("GBP"))
         money.currency.iso_code.should eq("GBP")
       end
     end
