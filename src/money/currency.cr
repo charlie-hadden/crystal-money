@@ -12,7 +12,8 @@ class Money
 
     getter :id, :name, :iso_code, :iso_numeric, :priority, :symbol,
       :disambiguate_symbol, :symbol_first, :subunit, :subunit_to_unit,
-      :html_entity, :decimal_mark, :thousands_separator, :smallest_denomination
+      :html_entity, :decimal_mark, :thousands_separator, :smallest_denomination,
+      :decimal_places
 
     {{ run("../../data/currency_loader") }}
 
@@ -33,7 +34,22 @@ class Money
       @smallest_denomination : UInt32
     )
       @id = id.downcase.as(String)
+      @decimal_places = calculate_decimal_places(subunit_to_unit).as(Int32)
+
       @@currencies[@id] = self
+    end
+
+    private def calculate_decimal_places(num)
+      return 0 if num == 1
+
+      i = 1
+
+      while num >= 10
+        num /= 10
+        i += 1 if num >= 10
+      end
+
+      i
     end
   end
 end

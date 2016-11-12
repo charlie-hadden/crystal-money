@@ -46,4 +46,12 @@ describe Money::Currency do
       currency.id.should eq("foo")
     end
   end
+
+  describe "#decimal_places" do
+    it "returns the correct number of places" do
+      Money::Currency.find("USD").decimal_places.should eq(2)
+      Money::Currency.find("MRO").decimal_places.should eq(1)
+      Money::Currency.find("BIF").decimal_places.should eq(0)
+    end
+  end
 end
