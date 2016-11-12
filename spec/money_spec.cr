@@ -5,7 +5,7 @@ describe Money do
     context "a currency is not provided" do
       it "should use the default currency" do
         money = Money.new(1000)
-        money.currency.iso_code.should eq(Money.default_currency)
+        money.currency.iso_code.should eq(Money::Config.default_currency)
       end
     end
 

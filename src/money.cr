@@ -4,11 +4,7 @@ require "./money/*"
 class Money
   getter :fractional, :currency
 
-  def self.default_currency
-    "USD"
-  end
-
-  def initialize(fractional : Int, currency : String = Money.default_currency)
+  def initialize(fractional : Int, currency : String = Config.default_currency)
     @fractional = fractional.to_i64.as(Int64)
     @currency = Currency.find(currency).as(Currency)
   end
