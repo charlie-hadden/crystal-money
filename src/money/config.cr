@@ -14,5 +14,6 @@ class Money
 
     config default_currency, String, "USD"
     config default_bank, Bank::Base, Bank::SingleCurrency.new
+    config default_rate_store, RatesStore::Base, RatesStore::Memory.new
   end
 end

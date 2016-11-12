@@ -12,4 +12,10 @@ describe Money::Config do
       Money::Config.default_bank.should be_a(Money::Bank::SingleCurrency)
     end
   end
+
+  describe ".default_rate_store" do
+    it "should return a Memory instance" do
+      Money::Config.default_rate_store.should be_a(Money::RatesStore::Memory)
+    end
+  end
 end

@@ -1,7 +1,6 @@
 class Money
   module Bank
     class Error < Exception; end
-    class UnknownRate < Error; end
 
     abstract class Base
       def exchange_with(from : Money, to_currency : String) : Money

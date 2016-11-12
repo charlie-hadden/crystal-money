@@ -1,6 +1,7 @@
 require "big"
 require "./money/*"
 require "./money/bank/*"
+require "./money/rates_store/*"
 
 class Money
   getter :fractional, :currency
