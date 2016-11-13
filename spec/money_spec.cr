@@ -86,6 +86,7 @@ describe Money do
     it "uses the subunit_to_unit property" do
       Money.new(1000, "BHD").to_s.should eq("1.000")
       Money.new(1000, "CNY").to_s.should eq("10.00")
+      Money.new(1000, "VUV").to_s.should eq("1000")
     end
 
     it "does not work when subunit_to_unit is 5" do

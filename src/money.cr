@@ -39,10 +39,16 @@ class Money
   def to_s(io : IO)
     unit, subunit = fractional.abs.divmod(currency.subunit_to_unit)
 
-    str = "#{unit}#{currency.decimal_mark}#{pad_subunit(subunit)}"
-    str = "-#{str}" if fractional < 0
+    io << "-" if fractional < 0
+    io << unit
 
-    io << str
+    decimals = currency.decimal_places
+
+    if decimals > 0
+      padding = "0" * decimals
+      io << currency.decimal_mark
+      io << "#{padding}#{subunit}"[-1 * decimals, decimals]
+    end
   end
 
   def inspect(io : IO)
@@ -51,9 +57,6 @@ class Money
     io << " fractional: #{fractional}, currency: #{currency.iso_code}>"
   end
 
-  private def pad_subunit(subunit)
-    count = currency.decimal_places
-    padding = "0" * count
-    "#{padding}#{subunit}"[-1 * count, count]
+  private def format_decimal(subunit)
   end
 end

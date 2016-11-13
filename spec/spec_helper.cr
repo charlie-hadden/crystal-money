@@ -18,3 +18,11 @@ class TestStore < Money::RatesStore::Base
     2.0
   end
 end
+
+def with_format_display_free
+  format = Money::Config.format_display_free
+  Money::Config.format_display_free = "FREE"
+  yield
+ensure
+  Money::Config.format_display_free = format
+end
