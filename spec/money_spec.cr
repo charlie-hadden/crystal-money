@@ -30,9 +30,9 @@ describe Money do
       money.fractional.should eq(1000)
     end
 
-    it "stores the fractional as an Int64" do
+    it "stores the fractional as an BigInt" do
       money = Money.new(1000)
-      money.fractional.should be_a(Int64)
+      money.fractional.should be_a(BigInt)
     end
   end
 

@@ -17,8 +17,15 @@ class Money
                  fractional : Int,
                  @currency : Currency,
                  @bank : Bank::Base = Config.default_bank)
-    @fractional = fractional.to_i64.as(Int64)
+    initialize(BigInt.new(fractional), currency, bank)
   end
+
+  def initialize(
+                 @fractional : BigInt,
+                 @currency : Currency,
+                 @bank : Bank::Base = Config.default_bank)
+  end
+
 
   def amount
     BigFloat.new(fractional) / BigFloat.new(currency.subunit_to_unit)
@@ -37,7 +44,7 @@ class Money
   end
 
   def to_s(io : IO)
-    unit, subunit = fractional.abs.divmod(currency.subunit_to_unit)
+    unit, subunit = fractional.abs.divmod(BigInt.new(currency.subunit_to_unit))
 
     io << "-" if fractional < 0
     io << unit

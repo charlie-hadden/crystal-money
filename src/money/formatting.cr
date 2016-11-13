@@ -28,7 +28,7 @@ class Money
       sign = ""
     end
 
-    if no_cents || (no_cents_if_whole && fractional % currency.subunit_to_unit == 0)
+    if no_cents || (no_cents_if_whole && fractional % BigInt.new(currency.subunit_to_unit) == 0)
       formatted = formatted.to_i(strict: false).to_s
     end
 

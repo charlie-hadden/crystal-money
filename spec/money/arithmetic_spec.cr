@@ -3,8 +3,8 @@ require "../spec_helper"
 describe Money do
   describe "#<=>" do
     it "works as intended" do
-      (Money.new(-100) <=> Money.new(100)).should eq(-1)
-      (Money.new(100) <=> Money.new(-100)).should eq(1)
+      ((Money.new(-100) <=> Money.new(100)) < 0).should be_true
+      ((Money.new(100) <=> Money.new(-100)) > 0).should be_true
       (Money.new(0) <=> Money.new(0)).should eq(0)
     end
 
