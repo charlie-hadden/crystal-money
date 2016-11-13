@@ -15,7 +15,7 @@ class Money
       :html_entity, :decimal_mark, :thousands_separator, :smallest_denomination,
       :decimal_places
 
-    {{ run("../../data/currency_loader") }}
+    {{ run("./data/currency_loader") }}
 
     def initialize(
                    id : String,
