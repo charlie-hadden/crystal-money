@@ -51,7 +51,7 @@ Money.new(1000, "USD").exchange_to("GBP") #=> Money.new(converted_value, "GBP")
 
 ## Contributing
 
-1. Fork it ( https://github.com/charlie-hadden/money/fork )
+1. Fork it ( https://github.com/charlie-hadden/crystal-money/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
