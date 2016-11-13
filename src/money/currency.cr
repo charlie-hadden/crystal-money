@@ -18,21 +18,20 @@ class Money
     {{ run("../../data/currency_loader") }}
 
     def initialize(
-      id : String,
-      @name : String,
-      @iso_code : String,
-      @iso_numeric : String,
-      @priority : Int32,
-      @symbol : String,
-      @disambiguate_symbol : String,
-      @symbol_first : Bool,
-      @subunit : String,
-      @subunit_to_unit : UInt32,
-      @html_entity : String,
-      @decimal_mark : String,
-      @thousands_separator : String,
-      @smallest_denomination : UInt32
-    )
+                   id : String,
+                   @name : String,
+                   @iso_code : String,
+                   @iso_numeric : String,
+                   @priority : Int32,
+                   @symbol : String,
+                   @disambiguate_symbol : String,
+                   @symbol_first : Bool,
+                   @subunit : String,
+                   @subunit_to_unit : UInt32,
+                   @html_entity : String,
+                   @decimal_mark : String,
+                   @thousands_separator : String,
+                   @smallest_denomination : UInt32)
       @id = id.downcase.as(String)
       @decimal_places = calculate_decimal_places(subunit_to_unit).as(Int32)
 

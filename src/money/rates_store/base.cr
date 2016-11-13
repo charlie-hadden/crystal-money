@@ -1,6 +1,7 @@
 class Money
   module RatesStore
     class Error < Exception; end
+
     class UnknownRate < Error; end
 
     abstract class Base
